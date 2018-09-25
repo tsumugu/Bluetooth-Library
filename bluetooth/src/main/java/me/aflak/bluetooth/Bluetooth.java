@@ -325,6 +325,7 @@ public class Bluetooth {
             bluetoothAdapter.cancelDiscovery();
 
             try {
+                socket =(BluetoothSocket) device.getClass().getMethod("createRfcommSocket", new Class[] {int.class}).invoke(device,1);
                 socket.connect();
                 out = socket.getOutputStream();
                 input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
